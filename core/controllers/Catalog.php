@@ -1,7 +1,7 @@
 <?php
 
 function actionIndex($params = null) {
-    $catalog = getModel();
-    template_addView('{{content}}', 'catalog', compact('catalog'));
+    $catalog = include getModel();
+    templater_addView('{{content}}', 'catalog', compact('catalog'));
 }
 

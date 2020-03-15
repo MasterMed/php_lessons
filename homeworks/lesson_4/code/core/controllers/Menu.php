@@ -1,14 +1,6 @@
 <?php
 
-$menu = [
-    ['label' => 'Главная', 'url' => '/'],
-    ['label' => 'Каталог', 'url' => '/catalog/'],
-    ['label' => 'Галерея', 'menu' => [
-            ['label' => 'Галерея', 'url' => '/gallery/'],
-            ['label' => 'Загрузить', 'url' => '/gallery/upload/'],
-        ],
-    ],
-];
+include MODELS.'menu.php';
 
 function menu_render($menu, $dropdownId = 'dropdown', $level = 0) {
     $classes = [
@@ -30,8 +22,8 @@ function menu_render($menu, $dropdownId = 'dropdown', $level = 0) {
     }
     $level++;
     ob_start();
-    include TEMPLATES_DIR . "elements/menu.php";
+    include ELEMENTS . "menu.php";
     return ob_get_clean();
 }
 
-templater_addView('{{menu}}', menu_render($menu));
+template_addView('{{menu}}', menu_render($menu));

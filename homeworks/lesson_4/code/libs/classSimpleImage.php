@@ -16,18 +16,13 @@ class SimpleImage {
    * @var string image_extention
    */
   public $extention;
-  
-  /**
-   * @var array image_info
-   */
-  public $image_info;
 
   /**
    * Load image from file.
    */
   public function load($filename) {
-    $this->image_info = getimagesize($filename);
-    $this->image_type = $this->image_info[2];
+    $image_info = getimagesize($filename);
+    $this->image_type = $image_info[2];
     if ($this->image_type == IMAGETYPE_JPEG) {
       $this->image = imagecreatefromjpeg($filename);
       $this->extention = 'jpg';

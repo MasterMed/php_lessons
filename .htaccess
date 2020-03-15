@@ -1,7 +1,17 @@
-RewriteEngine On
-#RewriteBase   /
+Options +FollowSymLinks
+IndexIgnore */*
+RewriteEngine on
 
-RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^/(public)
+RewriteRule ^assets/(.*)$ /public/assets/$1 [L]
+RewriteRule ^css/(.*)$ public/css/$1 [L]
+RewriteRule ^js/(.*)$ public/js/$1 [L]
+RewriteRule ^images/(.*)$ public/images/$1 [L]
+RewriteRule ^fonts/(.*)$ public/fonts/$1 [L]
+RewriteRule ^upload/(.*)$ public/upload/$1 [L]
+RewriteRule ^robots.txt$ public/robots.txt [L]
+RewriteRule (.*) /public/S1
+
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ ./index.php
-
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . /public/index.php [L]

@@ -7,13 +7,15 @@ $routeLength = 0;
 if(strlen($routeString) > 0) {
     $routeLength = count($route);
     $routeController = ucfirst($route[0]).'.php';
+    $routeModel = strtolower($route[0]);    
     if(!file_exists(CONTROLLERS.$routeController)) {
         die("Страницы {$routeController} не существует. 404");
     }    
 } else {
-    $routeController = 'Main.php'; 
+    $routeController = 'Main.php';
+    $routeModel = 'main';   
 }
-
+setModel($routeModel);
 include CONTROLLERS.$routeController;
 
 if(isset($route[1])) {
