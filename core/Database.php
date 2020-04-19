@@ -17,7 +17,7 @@ function sql_select($from, $sel = NULL, $where = NULL, $group = NULL, $order = N
     $query .= ($limit) ? " LIMIT " . $limit : "";
     $result = mysqli_query(getDb(), $query);
     //echo $query." ".__FILE__." ".__LINE__."<br />";
-    $rows = mysqli_num_rows($result);
+    $rows = @mysqli_num_rows($result);
     if (!$rows)
         return false;
     for ($i = 0; $i < $rows; $i++) {
